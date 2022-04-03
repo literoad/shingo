@@ -37,13 +37,14 @@ exports.get = async function (req, res) {
   });
 
   if (user) {
-    const { signedUp, subscription } = user;
+    const { signedUp, subscription, payment } = user;
     const active = moment().isBefore(subscription.expires);
 
     return {
       signedUp,
       subscription,
       active,
+      willRebill: payment.status !== "not-started",
     };
   }
 
