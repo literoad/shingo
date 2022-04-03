@@ -29,6 +29,8 @@ fastify.post(
   users.create
 );
 
+fastify.get("/users/:id", users.get);
+
 fastify.after(() => {
   fastify.gracefulShutdown((signal, next) => {
     next();

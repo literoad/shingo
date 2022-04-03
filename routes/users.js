@@ -27,3 +27,26 @@ exports.create = async function (req) {
 
   return "OK";
 };
+
+exports.get = async function (req, res) {
+  const client = await clientPromise;
+  const userId = req.params.id;
+
+  const user = await client.db("shingo").collection("users").findOne({
+    _id: userId,
+  });
+
+  if (user) {
+    const { signedUp, subscription } = user;
+    const active = moment().isBefore(subscription.expires);
+
+    return {
+      signedUp,
+      subscription,
+      active,
+    };
+  }
+
+  res.code(404);
+  return "Not Found";
+};
