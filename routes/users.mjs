@@ -1,8 +1,8 @@
-const moment = require("moment");
+import moment from "moment";
 
-const clientPromise = require("../lib/mongo");
+import clientPromise from "../lib/mongo.mjs";
 
-exports.create = async function (req) {
+export async function create(req) {
   const client = await clientPromise;
   const { user } = req.body;
 
@@ -26,9 +26,9 @@ exports.create = async function (req) {
     });
 
   return "OK";
-};
+}
 
-exports.get = async function (req, res) {
+export async function get(req, res) {
   const client = await clientPromise;
   const userId = req.params.id;
 
@@ -50,4 +50,4 @@ exports.get = async function (req, res) {
 
   res.code(404);
   return "Not Found";
-};
+}

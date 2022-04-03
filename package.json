@@ -1,13 +1,17 @@
 {
   "name": "shingo",
   "private": true,
-  "main": "index.js",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
   "dependencies": {
     "dotenv": "^16.0.0",
     "fastify": "^3.27.4",
     "fastify-graceful-shutdown": "^3.1.0",
     "moment": "^2.29.1",
-    "mongodb": "^4.4.1"
+    "mongodb": "^4.4.1",
+    "node-fetch": "^3.2.3"
   },
   "devDependencies": {
     "prettier": "^2.6.2"
