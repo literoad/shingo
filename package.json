@@ -4,7 +4,9 @@
   "main": "index.js",
   "dependencies": {
     "fastify": "^3.27.4",
-    "fastify-graceful-shutdown": "^3.1.0"
+    "fastify-graceful-shutdown": "^3.1.0",
+    "moment": "^2.29.1",
+    "mongodb": "^4.4.1"
   },
   "devDependencies": {
     "prettier": "^2.6.2"
