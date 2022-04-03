@@ -7,7 +7,7 @@ exports.create = async function (req) {
   const { user } = req.body;
 
   const signedUp = moment();
-  const trialEnds = signedUp.add(7, "days");
+  const trialEnds = moment(signedUp).add(7, "days");
 
   await client
     .db("shingo")
@@ -24,4 +24,6 @@ exports.create = async function (req) {
         status: "not-started",
       },
     });
+
+  return "OK";
 };

@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const users = require("./routes/users");
 
 const fastify = require("fastify")({ logger: true });
@@ -11,10 +13,16 @@ fastify.post(
       body: {
         type: "object",
         properties: {
-          id: "string",
-          email: "string",
+          user: {
+            type: "object",
+            properties: {
+              id: { type: "string" },
+              email: { type: "string" },
+            },
+            required: ["id"],
+          },
         },
-        required: ["id"],
+        required: ["user"],
       },
     },
   },
