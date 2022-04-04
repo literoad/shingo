@@ -20,9 +20,6 @@ export async function create(req) {
         expires: trialEnds.toDate(),
         trial: true,
       },
-      payment: {
-        status: "not-started",
-      },
     });
 
   return "OK";
@@ -37,14 +34,15 @@ export async function get(req, res) {
   });
 
   if (user) {
-    const { signedUp, subscription, payment } = user;
+    const { signedUp, subscription } = user;
     const active = moment().isBefore(subscription.expires);
+    const rebill = Boolean(user.rebill);
 
     return {
       signedUp,
       subscription,
       active,
-      willRebill: payment.status !== "not-started",
+      rebill,
     };
   }
 

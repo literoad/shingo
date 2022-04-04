@@ -58,6 +58,10 @@ fastify.post(
   payments.start
 );
 
+fastify.post("/payments/notification", {}, payments.notification);
+
+fastify.post("/payments/disable-rebill", {}, payments.disableRebill);
+
 fastify.after(() => {
   fastify.gracefulShutdown((signal, next) => {
     next();
