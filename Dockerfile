@@ -12,6 +12,9 @@ FROM node:16-alpine AS runner
 
 ENV NODE_ENV production
 ENV PORT 5234
+ENV MONGO mongodb://mongo:27017
+ENV TERMINAL_KEY secret
+ENV TERMINAL_PASSWORD secret
 
 USER node
 WORKDIR /app
