@@ -1,9 +1,9 @@
 import * as tinkoff from "../lib/tinkoff.mjs";
 
 export async function start(req, res) {
-  const { user } = req.body;
+  const { user, days } = req.body;
 
-  const paymentUrl = await tinkoff.newSubscription(user);
+  const paymentUrl = await tinkoff.newSubscription(user, days);
   if (!paymentUrl) {
     return res.code(500).send("Unable to start the payment process");
   }

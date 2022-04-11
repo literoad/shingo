@@ -50,6 +50,7 @@ fastify.post(
             },
             required: ["id"],
           },
+          days: { type: "number" },
         },
         required: ["user"],
       },
